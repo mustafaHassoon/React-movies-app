@@ -1,11 +1,15 @@
 //importing react 
 import React, { useState } from 'react';
+
+import axios from 'axios';
+
 //importingbootstrap components
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+
 
 //importing scss file
 import './registration-view.scss';
@@ -18,10 +22,21 @@ export function RegistrationView(props) {
 
   // login credentials
   const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(username, password, email, birthday);
-    // Send a request to the server for authentication then call props.onLoggedIn(username)
-    props.onLoggedIn(username);
+
+    axios.post('https://shrouded-beach-69227.herokuapp.com/users', {
+      Username: username,
+      Password: password,
+      Email: email,
+      Birthday: birthday
+    })
+      .then(response => {
+        const data = response.data;
+        console.log(data);
+        window.open('/', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
+      })
+      .catch(e => {
+        console.log('error registering the user')
+      });
   };
 
   return (
