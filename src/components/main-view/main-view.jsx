@@ -4,6 +4,9 @@ import axios from 'axios';
 // importing reac router
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
+import { Link } from "react-router-dom";
+
+
 //bootstap
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
@@ -16,6 +19,10 @@ import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { GenreView } from '../genre-view/genre-view';
+import { DirectorView } from '../director-view/director-view';
+import { ProfileView } from '../profile-view/profile-view';
+
+
 export class MainView extends React.Component {
   constructor() {
     super();
@@ -24,6 +31,7 @@ export class MainView extends React.Component {
       movies: [],
       selectedMovie: null,
       user: null,
+      favoriteMovies: null,
     };
   }
   //new getMovies method
@@ -45,7 +53,8 @@ export class MainView extends React.Component {
     let accessToken = localStorage.getItem('token');
     if (accessToken !== null) {
       this.setState({
-        user: localStorage.getItem('user')
+        user: localStorage.getItem('user'),
+        favoriteMovies: localStorage.getItem('favoriteMovies'),
       });
       this.getMovies(accessToken);
     }
@@ -61,35 +70,41 @@ export class MainView extends React.Component {
   onLoggedIn(authData) {
     console.log(authData);
     this.setState({
-      user: authData.user.Username
+      user: authData.user.Username,
+      favoriteMovies: authData.user.FavoriteMovies,
     });
 
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.Username);
+    localStorage.setItem('favoriteMovies', authData.user.FavoriteMovies);
     this.getMovies(authData.token);
   }
 
-  // onLoggedOut() {
-  //   localStorage.removeItem('token');
-  //   localStorage.removeItem('user');
-  // }
   onLoggedOut() {
-
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-
+    window.location.href = "/";
   }
 
   render() {
     const { movies, user } = this.state;
 
-
+    let profileButton;
+    let logoutButton;
+    if (user) {
+      logoutButton = <Button variant="danger" onClick={this.onLoggedOut}>Logout</Button>
+      profileButton = <Link to={`/profile/${user}`}>
+        <Button variant="dark"><h5 className="value">Profile</h5></Button>
+      </Link>
+    }
     // if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
     if (!movies) return <div className="main-view" />;
 
     return (
       <Router>
         <div className="main-view">
+          {logoutButton}
+          {profileButton}
           <Route exact path="/" render={() => {
             if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
             return movies.map(m => <MovieCard key={m._id} movie={m} />)
@@ -100,13 +115,21 @@ export class MainView extends React.Component {
 
           <Route path="/genres/:name" render={({ match }) => {
             if (!movies) return <div className="main-view" />;
-            return <GenreView director={movies.find(m => m.Genre.Name === match.params.name).Genre} />
+            return <GenreView genre={movies.find(m => m.Genre.Name === match.params.name).Genre} />
           }
           } />
 
-          <button type='button' onClick={this.onLoggedOut}>Log Out</button>
+          <Route path="/directors/:name" render={({ match }) => {
+            if (!movies) return <div className="main-view" />;
+            return <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} />
+          }
+          } />
+          <Route path="/profile/:username" render={() => {
+            if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+            return <ProfileView user={user} />
+          }
+          } />
         </div>
-
       </Router>
     );
   }

@@ -24,14 +24,14 @@ export class DirectorView extends React.Component {
   }
 
   render() {
-    const { movie } = this.props;
+    const { director } = this.props;
 
-    if (!movie) return null;
+    if (!director) return null;
 
     return (
 
       <Container className='container'>
-        <h1>Director </h1>
+        <h1>Director: {director.Name} </h1>
 
       </Container>
 

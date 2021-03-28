@@ -24,14 +24,14 @@ export class GenreView extends React.Component {
   }
 
   render() {
-    const { movie } = this.props;
+    const { genre } = this.props;
 
-    if (!movie) return null;
+    if (!genre) return null;
 
     return (
 
       <Container className='container'>
-        <h1>genre </h1>
+        <h1>genre:{genre.Description}</h1>
 
       </Container>
 

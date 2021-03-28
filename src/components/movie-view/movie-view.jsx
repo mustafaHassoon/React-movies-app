@@ -59,7 +59,7 @@ export class MovieView extends React.Component {
               <Button variant="dark">Back</Button>
             </Link> */}
 
-          <Button type='button' variant='dark' onClick={() => window.open("mainView", "_self")}>Back</Button>
+          <Button type='button' variant='dark' onClick={() => window.history.go(-1)}>Back</Button>
 
 
         </div>

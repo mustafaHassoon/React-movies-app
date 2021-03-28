@@ -3,6 +3,9 @@ import React, { useState } from "react";
 import axios from 'axios';
 // importing bootstrap
 
+import { Link } from "react-router-dom";
+
+
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
@@ -64,6 +67,11 @@ export function LoginView(props) {
               <Button type='button' variant='dark' onClick={handleSubmit}>
                 Login
               </Button>
+            </Col>
+            <Col className='Button'>
+              <Link to={`/register`}>
+                <Button type='button' variant="danger">Register</Button>
+              </Link>
             </Col>
           </Row>
         </Form.Group>
