@@ -20,6 +20,7 @@ export function RegistrationView(props) {
   const [email, setEmail] = useState('');
   const [birthday, setBirthday] = useState('');
 
+
   // login credentials
   const handleSubmit = (e) => {
 

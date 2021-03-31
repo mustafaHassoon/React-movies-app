@@ -2,4 +2,16 @@
   color: steelblue;
 }
 
+.main-view {
+  margin-top: 4rem !important;
+}
+
+.card-view {
+  margin: 5% 0;
+}
+
+.movies-list {
+  place-items: start center;
+}
+
 /*# sourceMappingURL=/src.78399e21.css.map */
