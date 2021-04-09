@@ -122,7 +122,7 @@ export class MainView extends React.Component {
         <Row>
           <Col></Col>
           <Col xs={6}>
-            <Router>
+            <Router basename="/client">
               <div className="main-view">
                 <div className="bottun-main">{logoutButton}</div>
 
