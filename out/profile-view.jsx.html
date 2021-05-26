@@ -1,4 +1,32 @@
-import React, { useState } from "react";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: profile-view.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: profile-view.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useState } from "react";
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
@@ -134,71 +162,93 @@ export class ProfileView extends React.Component {
     };
 
     return (
-      <Container className='container'>
-        <h1>hello {this.state.user}</h1>
-        <Form>
-          <Form.Group className='registration'>
-            <br />
-            <br />
-            <h4>Update User Info</h4>
-            <Row>
-              <Col>
-                <Form.Label className='Label'>New Username:</Form.Label>
-                <Form.Control
+      &lt;Container className='container'>
+        &lt;h1>hello {this.state.user}&lt;/h1>
+        &lt;Form>
+          &lt;Form.Group className='registration'>
+            &lt;br />
+            &lt;br />
+            &lt;h4>Update User Info&lt;/h4>
+            &lt;Row>
+              &lt;Col>
+                &lt;Form.Label className='Label'>New Username:&lt;/Form.Label>
+                &lt;Form.Control
                   value={this.state.user}
                   onChange={this.setUsername}
                   className='Control'
                   type='text'
                   placeholder='Enter Username'
                 />
-              </Col>
-              <Col>
-                <Form.Label className='Label'>New Email:</Form.Label>
-                <Form.Control
+              &lt;/Col>
+              &lt;Col>
+                &lt;Form.Label className='Label'>New Email:&lt;/Form.Label>
+                &lt;Form.Control
                   value={this.state.email}
                   onChange={this.setEmail}
                   className='email'
                   type='email'
                   placeholder='Enter Email'
                 />
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Form.Label className='Label'>New Birthday:</Form.Label>
-                <Form.Control
+              &lt;/Col>
+            &lt;/Row>
+            &lt;Row>
+              &lt;Col>
+                &lt;Form.Label className='Label'>New Birthday:&lt;/Form.Label>
+                &lt;Form.Control
                   value={this.state.birthday}
                   onChange={this.setBirthday}
                   className='birthday'
                   type='date'
                   placeholder='Enter Birthday'
                 />
-              </Col>
-              <Col>
-                <Form.Label className='Label'>New Password:</Form.Label>
-                <Form.Control
+              &lt;/Col>
+              &lt;Col>
+                &lt;Form.Label className='Label'>New Password:&lt;/Form.Label>
+                &lt;Form.Control
                   value={this.state.password}
                   onChange={this.setPassword}
                   className='Control2'
                   type='password'
                   placeholder='Enter Password'
                 />
-              </Col>
-            </Row>
-            <br />
-            <Row className='Button'>
-              <Col>
-                <Button type='button' variant='dark' onClick={handleUpdate}>
+              &lt;/Col>
+            &lt;/Row>
+            &lt;br />
+            &lt;Row className='Button'>
+              &lt;Col>
+                &lt;Button type='button' variant='dark' onClick={handleUpdate}>
                   Update
-                                </Button>
-              </Col>
-            </Row>
-          </Form.Group>
-        </Form>
-        <Button type='button' variant='danger' onClick={handleDeregister}>
+                                &lt;/Button>
+              &lt;/Col>
+            &lt;/Row>
+          &lt;/Form.Group>
+        &lt;/Form>
+        &lt;Button type='button' variant='danger' onClick={handleDeregister}>
           Delete Account
-                </Button>
-      </Container>
+                &lt;/Button>
+      &lt;/Container>
     );
   }
-}
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#handleDeregister">handleDeregister</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed May 26 2021 03:42:32 GMT+0200 (Central European Summer Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -15,7 +15,12 @@ import Col from 'react-bootstrap/Col';
 export function LoginView(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
+  /**
+  * sending username  to login
+  * @function handleSubmit
+  * @param {event}
+  * @return {object} User information
+  */
   const handleSubmit = e => {
     e.preventDefault();
     console.log(username, password);
